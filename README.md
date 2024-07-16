@@ -14,7 +14,7 @@ A Flutter package that provides customizable gradient containers with title and 
 To use this package, add `fancy_containers` as a dependency in your `pubspec.yaml` file.
 
 
-```pubspec.yaml
+```yaml
 dependencies:
   fancy_containers: ^1.0.0
 ```
