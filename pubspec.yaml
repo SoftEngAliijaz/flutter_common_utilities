@@ -1,7 +1,7 @@
 name: flutter_common_utilities
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+description: A Flutter utility package for creating customizable gradient containers with titles and subtitles.
+version: 0.1.1
+homepage: https://github.com/SoftEngAliijaz/flutter_common_utilities
 
 environment:
   sdk: ^3.5.0-323.0.dev
