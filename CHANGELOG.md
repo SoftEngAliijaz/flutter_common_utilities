@@ -1,4 +1,4 @@
-## 0.1.4-dev
+## 0.1.4
 
 - Renamed package to `flutter_common_utilities`.
 - Updated description to reflect new functionalities.
