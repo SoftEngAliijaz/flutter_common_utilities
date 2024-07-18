@@ -1,10 +1,10 @@
 name: flutter_common_utilities
 description: A Flutter utility package for common utils in Flutter App.
-version: 0.1.4
+version: 0.1.5
 homepage: https://github.com/SoftEngAliijaz/flutter_common_utilities
 
 environment:
-  sdk: ^3.5.0-323.0
+  sdk: '>=3.1.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
