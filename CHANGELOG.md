@@ -1,4 +1,6 @@
-## 0.1.6
+## 0.1.7
 
-- No Need of Fancy Containers
-- Just Have Responsive Util for now
+- Added custom breakpoints for mobile, mobile large, tablet, and desktop views.
+- Introduced orientation handling for portrait and landscape modes.
+- Implemented animated transitions between different layouts.
+- Improved documentation.

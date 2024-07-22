@@ -1,21 +1,21 @@
 ```markdown
 # Flutter Common Utilities
 
-A Flutter utility package for Common utils in Flutter App.
+"A Flutter utility package providing essential tools for responsive and adaptive UI development in Flutter applications."
 
 ## Features
 
-- Responsive utility for different screen sizes.
-- Customize dimensions using Responsive Util.
-- Ideal for creating stylish UI components.
+- Responsive utility for different screen sizes and orientations.
+- Customizable breakpoints for mobile, tablet, and desktop views.
+- Animated transitions between different layouts.
 
-## Getting started
+## Getting Started
 
 To use this package, add `flutter_common_utilities` as a dependency in your `pubspec.yaml` file.
 
 ```yaml
 dependencies:
-  flutter_common_utilities: ^latest
+  flutter_common_utilities: ^latest_version
 ```
 
 For help getting started with Flutter, view the online
@@ -25,7 +25,7 @@ For help getting started with Flutter, view the online
 
 ### ResponsiveUtil
 
-You can use the `ResponsiveUtil` widget to create different layouts for different screen sizes.
+The `ResponsiveUtil` widget helps you create different layouts for different screen sizes and orientations. It supports mobile, mobile large, tablet, and desktop views with smooth transitions.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -39,51 +39,71 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: ResponsiveUtil(
-          mobile: MobileWidget(),
-          mobileLarge: MobileLargeWidget(),
-          tablet: TabletWidget(),
-          desktop: DesktopWidget(),
-        ),
+      title: 'Responsive Util Example',
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Responsive Util Example'),
+      ),
+      body: ResponsiveUtil(
+        mobile: MobileHomeScreen(),
+        mobileLarge: MobileLargeHomeScreen(),
+        tablet: TabletHomeScreen(),
+        desktop: DesktopHomeScreen(),
       ),
     );
   }
 }
 
-class MobileWidget extends StatelessWidget {
+class MobileHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Mobile'));
+    return Center(child: Text('Mobile Home Screen'));
   }
 }
 
-class MobileLargeWidget extends StatelessWidget {
+class MobileLargeHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Mobile Large'));
+    return Center(child: Text('Mobile Large Home Screen'));
   }
 }
 
-class TabletWidget extends StatelessWidget {
+class TabletHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Tablet'));
+    return Center(child: Text('Tablet Home Screen'));
   }
 }
 
-class DesktopWidget extends StatelessWidget {
+class DesktopHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Desktop'));
+    return Center(child: Text('Desktop Home Screen'));
   }
 }
-
 ```
 
-For more examples, check the repository.
+## Example
 
-## Additional information
+An example project demonstrating how to use the `responsive_util` package can be found in the `example` directory.
 
-Visit the [GitHub repository](https://github.com/SoftEngAliijaz/flutter_common_utilities) for more information.
-Feel free to [file issues](https://github.com/SoftEngAliijaz/flutter_common_utilities/issues) or contribute to the package.
+To run the example, navigate to the `example` directory and use the following command:
+
+```sh
+flutter run
+```
+
+The example showcases how to use the `ResponsiveUtil` widget to create a responsive Flutter application that adapts to different screen sizes and orientations.
+
+## Additional Information
+
+Visit the [GitHub repository](https://github.com/SoftEngAliijaz/flutter_common_utilities) for more information. Feel free to [file issues](https://github.com/SoftEngAliijaz/flutter_common_utilities/issues) or contribute to the package.
+```
