@@ -106,4 +106,3 @@ The example showcases how to use the `ResponsiveUtil` widget to create a respons
 ## Additional Information
 
 Visit the [GitHub repository](https://github.com/SoftEngAliijaz/flutter_common_utilities) for more information. Feel free to [file issues](https://github.com/SoftEngAliijaz/flutter_common_utilities/issues) or contribute to the package.
-```
