@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_common_utilities/widgets/common_step_circle.dart';
-import 'package:flutter_common_utilities/widgets/common_step_line.dart';
+import 'package:flutter_common_utilities/widgets/stepper_widgets/common_step_circle.dart';
+import 'package:flutter_common_utilities/widgets/stepper_widgets/common_step_line.dart';
 
 class FlutterCommonStepper extends StatefulWidget {
   final double width;
