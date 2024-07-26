@@ -16,7 +16,7 @@ To use this package, add `flutter_common_utilities` as a dependency in your `pub
 
 ```yaml
 dependencies:
-  flutter_common_utilities: ^0.1.8
+  flutter_common_utilities: ^latest_version
 ```
 
 For help getting started with Flutter, view the online
