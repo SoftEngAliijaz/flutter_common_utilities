@@ -1,6 +1,10 @@
-## 0.1.7
+## 0.1.8
 
-- Added custom breakpoints for mobile, mobile large, tablet, and desktop views.
-- Introduced orientation handling for portrait and landscape modes.
-- Implemented animated transitions between different layouts.
-- Improved documentation.
+### Added
+- **Flutter Common Stepper Widget**: Introduced a new widget for displaying step-by-step progress.
+  - **Custom Colors**: Allows customization for colors of completed steps, the current step, and inactive steps.
+  - **Dynamic Line Width**: Configurable width for the lines connecting the steps.
+  - **Navigation Methods**: Methods to navigate to the next, previous, or specific steps with integrated state management.
+
+### Improved
+- **Documentation**: Enhanced documentation with detailed instructions and examples for the new `Flutter Common Stepper` widget.
