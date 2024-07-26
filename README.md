@@ -175,7 +175,7 @@ class _StepperHomeScreenState extends State<StepperHomeScreen> {
 
 ## Example
 
-An example project demonstrating how to use the `ResponsiveUtil` widget and the `FlutterCommonStepper` widget can be found in the `example` directory.
+An example project demonstrating how to use the `ResponsiveUtil` widget and the `FlutterCommonStepper`.
 
 To run the example, navigate to the `example` directory and use the following command:
 
