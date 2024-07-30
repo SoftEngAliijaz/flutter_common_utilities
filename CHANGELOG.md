@@ -1,5 +1,7 @@
-## 0.1.9+1
+## 0.1.10
 
 ### Key Changes:
-- **Removed Code Snippets**: Removed the detailed code examples for `ResponsiveUtil` and `FlutterCommonStepper` from README.md file.
-- **Mentioned Example Section**: Added a note about the example section and how to run it.
+- **Updated `FlutterCommonStepper`**: Enhanced the `FlutterCommonStepper` widget to improve its responsiveness and visual performance.
+- **Added `ResponsiveGridView`**: Introduced a new `ResponsiveGridView` widget to provide adaptive grid layouts based on screen size.
+- **Documentation Improvements**: Expanded the README.md with detailed usage instructions and example code for the new `ResponsiveGridView` widget.
+- **Bug Fixes**: Addressed various issues reported by users, including layout bugs and performance optimizations.
