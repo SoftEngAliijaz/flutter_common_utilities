@@ -3,14 +3,6 @@ import 'package:flutter_common_utilities/widgets/stepper_widgets/common_step_cir
 import 'package:flutter_common_utilities/widgets/stepper_widgets/common_step_line.dart';
 
 class FlutterCommonStepper extends StatefulWidget {
-  final double width;
-  final int totalSteps;
-  final int currentStep;
-  final Color completedStepColor;
-  final Color activeStepColor;
-  final Color inactiveStepColor;
-  final double lineWidth;
-
   const FlutterCommonStepper({
     super.key,
     required this.width,
@@ -21,6 +13,14 @@ class FlutterCommonStepper extends StatefulWidget {
     required this.activeStepColor,
     required this.lineWidth,
   }) : assert(currentStep > 0 && currentStep <= totalSteps + 1);
+
+  final Color activeStepColor;
+  final Color completedStepColor;
+  final int currentStep;
+  final Color inactiveStepColor;
+  final double lineWidth;
+  final int totalSteps;
+  final double width;
 
   @override
   FlutterCommonStepperState createState() => FlutterCommonStepperState();
@@ -36,15 +36,32 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
     currentStep = widget.currentStep;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 24.0),
-      width: widget.width,
-      child: Row(
-        children: _buildSteps(),
-      ),
-    );
+  void moveToNextStep() {
+    if (currentStep! < widget.totalSteps) {
+      setState(() {
+        currentStep = (currentStep! + 1);
+        if (currentStep! > widget.totalSteps) {
+          isCompleted = true;
+        }
+      });
+    }
+  }
+
+  void moveToPreviousStep() {
+    if (currentStep! > 1) {
+      setState(() {
+        currentStep = (currentStep! - 1);
+      });
+    }
+  }
+
+  void goToStep(int step) {
+    setState(() {
+      currentStep = step;
+      if (currentStep! > widget.totalSteps) {
+        isCompleted = true;
+      }
+    });
   }
 
   List<Widget> _buildSteps() {
@@ -125,31 +142,14 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
         : Colors.grey[200]!;
   }
 
-  void moveToNextStep() {
-    if (currentStep! < widget.totalSteps) {
-      setState(() {
-        currentStep = (currentStep! + 1);
-        if (currentStep! > widget.totalSteps) {
-          isCompleted = true;
-        }
-      });
-    }
-  }
-
-  void moveToPreviousStep() {
-    if (currentStep! > 1) {
-      setState(() {
-        currentStep = (currentStep! - 1);
-      });
-    }
-  }
-
-  void goToStep(int step) {
-    setState(() {
-      currentStep = step;
-      if (currentStep! > widget.totalSteps) {
-        isCompleted = true;
-      }
-    });
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 24.0),
+      width: widget.width,
+      child: Row(
+        children: _buildSteps(),
+      ),
+    );
   }
 }

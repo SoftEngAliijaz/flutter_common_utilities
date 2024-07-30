@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveUtil extends StatelessWidget {
-  final Widget? mobile;
-  final Widget? mobileLarge;
-  final Widget? tablet;
-  final Widget? desktop;
-
   const ResponsiveUtil({
     super.key,
     required this.mobile,
@@ -17,6 +12,11 @@ class ResponsiveUtil extends StatelessWidget {
   static const int mobileBreakpoint = 500;
   static const int mobileLargeBreakpoint = 700;
   static const int tabletBreakpoint = 1024;
+
+  final Widget? desktop;
+  final Widget? mobile;
+  final Widget? mobileLarge;
+  final Widget? tablet;
 
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width <= mobileBreakpoint;
@@ -36,17 +36,6 @@ class ResponsiveUtil extends StatelessWidget {
   static bool isLandscape(BuildContext context) =>
       MediaQuery.of(context).orientation == Orientation.landscape;
 
-  @override
-  Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final Orientation orientation = MediaQuery.of(context).orientation;
-
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      child: _getResponsiveWidget(size, orientation),
-    );
-  }
-
   Widget _getResponsiveWidget(Size size, Orientation orientation) {
     if (size.width >= tabletBreakpoint) {
       return desktop!;
@@ -57,5 +46,16 @@ class ResponsiveUtil extends StatelessWidget {
     } else {
       return mobile!;
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final Orientation orientation = MediaQuery.of(context).orientation;
+
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: _getResponsiveWidget(size, orientation),
+    );
   }
 }

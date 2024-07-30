@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CommonStepCircle extends StatelessWidget {
-  final int index;
-  final Color circleColor;
-  final Color borderColor;
-  final double lineWidth;
-  final Widget innerWidget;
-
   const CommonStepCircle({
     super.key,
     required this.index,
@@ -15,6 +9,12 @@ class CommonStepCircle extends StatelessWidget {
     required this.lineWidth,
     required this.innerWidget,
   });
+
+  final Color borderColor;
+  final Color circleColor;
+  final int index;
+  final Widget innerWidget;
+  final double lineWidth;
 
   @override
   Widget build(BuildContext context) {
