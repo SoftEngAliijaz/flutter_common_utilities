@@ -11,10 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_common_utilities: # Ensure this points to the correct package location
-    path: ../ # Adjust the path if necessary
-
   cupertino_icons: ^1.0.8
+  flutter_common_utilities: ^0.1.11
 
 dev_dependencies:
   flutter_test:
