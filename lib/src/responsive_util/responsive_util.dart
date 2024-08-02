@@ -9,53 +9,45 @@ class ResponsiveUtil extends StatelessWidget {
     this.mobileLarge,
   });
 
-  static const int mobileBreakpoint = 500;
-  static const int mobileLargeBreakpoint = 700;
-  static const int tabletBreakpoint = 1024;
-
-  final Widget? desktop;
-  final Widget? mobile;
+  final Widget mobile;
   final Widget? mobileLarge;
   final Widget? tablet;
-
-  static bool isMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width <= mobileBreakpoint;
-
-  static bool isMobileLarge(BuildContext context) =>
-      MediaQuery.of(context).size.width <= mobileLargeBreakpoint;
-
-  static bool isTablet(BuildContext context) =>
-      MediaQuery.of(context).size.width < tabletBreakpoint;
-
-  static bool isDesktop(BuildContext context) =>
-      MediaQuery.of(context).size.width >= tabletBreakpoint;
-
-  static bool isPortrait(BuildContext context) =>
-      MediaQuery.of(context).orientation == Orientation.portrait;
-
-  static bool isLandscape(BuildContext context) =>
-      MediaQuery.of(context).orientation == Orientation.landscape;
-
-  Widget _getResponsiveWidget(Size size, Orientation orientation) {
-    if (size.width >= tabletBreakpoint) {
-      return desktop!;
-    } else if (size.width >= mobileLargeBreakpoint && tablet != null) {
-      return tablet!;
-    } else if (size.width >= mobileBreakpoint && mobileLarge != null) {
-      return mobileLarge!;
-    } else {
-      return mobile!;
-    }
-  }
+  final Widget desktop;
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final Orientation orientation = MediaQuery.of(context).orientation;
+    final double width = MediaQuery.of(context).size.width;
 
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      child: _getResponsiveWidget(size, orientation),
-    );
+    if (width >= 1921) {
+      return desktop;
+    } else if (width >= 801) {
+      return desktop;
+    } else if (width >= 451) {
+      return tablet ?? desktop;
+    } else if (width >= 0) {
+      return mobileLarge ?? tablet ?? desktop;
+    } else {
+      return mobile;
+    }
+  }
+
+  static bool isMobile(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    return width <= 450;
+  }
+
+  static bool isMobileLarge(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    return width > 450 && width <= 800;
+  }
+
+  static bool isTablet(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    return width > 800 && width <= 1920;
+  }
+
+  static bool isDesktop(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    return width > 1920;
   }
 }
