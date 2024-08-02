@@ -1,7 +1,5 @@
-## 0.1.10
+## 0.1.11
 
 ### Key Changes:
-- **Updated `FlutterCommonStepper`**: Enhanced the `FlutterCommonStepper` widget to improve its responsiveness and visual performance.
-- **Added `ResponsiveGridView`**: Introduced a new `ResponsiveGridView` widget to provide adaptive grid layouts based on screen size.
-- **Documentation Improvements**: Expanded the README.md with detailed usage instructions and example code for the new `ResponsiveGridView` widget.
-- **Bug Fixes**: Addressed various issues reported by users, including layout bugs and performance optimizations.
+
+- **Enhanced `ResponsiveUtil`**: We've upgraded the `ResponsiveUtil class` to boost its responsiveness and visual appeal, introducing new and updated `breakpoints` for a seamless user experience.
