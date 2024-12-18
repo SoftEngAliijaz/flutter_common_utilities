@@ -1,5 +1,17 @@
-## 0.1.11
+## 0.1.12
 
-### Key Changes:
+### Key Updates
 
-- **Enhanced `ResponsiveUtil`**: We've upgraded the `ResponsiveUtil class` to boost its responsiveness and visual appeal, introducing new and updated `breakpoints` for a seamless user experience.
+- **Enhanced `ResponsiveUtil`**: The `ResponsiveUtil` class has been improved to deliver better responsiveness and visual consistency. New and updated breakpoints have been introduced, ensuring a smoother and more seamless user experience across devices.
+
+- **FVM Integration**: The project now includes FVM (Flutter Version Manager) for easier Flutter SDK management, ensuring consistent development environments.
+
+- **Upgraded Flutter SDK**: Upgraded to Flutter SDK version **3.27**.
+
+- **Dart Update**: Now using Dart version **3.10.0**, bringing the latest language features and performance improvements.
+```  
+
+### Key Improvements:  
+1. Clear and concise explanation of changes.  
+2. Proper version references for both Flutter and Dart.  
+3. Highlighting the introduction of FVM for better developer workflow.
