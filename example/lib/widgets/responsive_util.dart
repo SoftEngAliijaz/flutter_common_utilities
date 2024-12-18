@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ResponsiveUtil extends StatelessWidget {
+class ResponsiveUtil extends StatefulWidget {
   const ResponsiveUtil({
     super.key,
     required this.mobile,
@@ -17,6 +17,9 @@ class ResponsiveUtil extends StatelessWidget {
   final Widget? mobile;
   final Widget? mobileLarge;
   final Widget? tablet;
+
+  @override
+  State<ResponsiveUtil> createState() => _ResponsiveUtilState();
 
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width <= mobileBreakpoint;
@@ -35,16 +38,20 @@ class ResponsiveUtil extends StatelessWidget {
 
   static bool isLandscape(BuildContext context) =>
       MediaQuery.of(context).orientation == Orientation.landscape;
+}
 
+class _ResponsiveUtilState extends State<ResponsiveUtil> {
   Widget _getResponsiveWidget(Size size, Orientation orientation) {
-    if (size.width >= tabletBreakpoint) {
-      return desktop!;
-    } else if (size.width >= mobileLargeBreakpoint && tablet != null) {
-      return tablet!;
-    } else if (size.width >= mobileBreakpoint && mobileLarge != null) {
-      return mobileLarge!;
+    if (size.width >= ResponsiveUtil.tabletBreakpoint) {
+      return widget.desktop!;
+    } else if (size.width >= ResponsiveUtil.mobileLargeBreakpoint &&
+        widget.tablet != null) {
+      return widget.tablet!;
+    } else if (size.width >= ResponsiveUtil.mobileBreakpoint &&
+        widget.mobileLarge != null) {
+      return widget.mobileLarge!;
     } else {
-      return mobile!;
+      return widget.mobile!;
     }
   }
 

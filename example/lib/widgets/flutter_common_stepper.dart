@@ -137,9 +137,11 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
   }
 
   Color _getLineColor(int index) {
-    return currentStep! > index + 1
-        ? Colors.blue.withOpacity(0.4)
-        : Colors.grey[200]!;
+    if (currentStep! > index + 1) {
+      return Colors.blue;
+    } else {
+      return Colors.grey[200]!;
+    }
   }
 
   @override

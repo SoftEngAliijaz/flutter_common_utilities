@@ -7,7 +7,8 @@ class ResponsiveGridView extends StatelessWidget {
   final int crossAxisCountTablet;
   final int crossAxisCountDesktop;
 
-  ResponsiveGridView({
+  const ResponsiveGridView({
+    super.key,
     required this.children,
     this.aspectRatio = 1.0,
     this.crossAxisCountMobile = 2,
@@ -21,11 +22,11 @@ class ResponsiveGridView extends StatelessWidget {
     int crossAxisCount;
 
     if (width < 600) {
-      crossAxisCount = crossAxisCountMobile; // Mobile
+      crossAxisCount = crossAxisCountMobile;
     } else if (width < 1200) {
-      crossAxisCount = crossAxisCountTablet; // Tablet
+      crossAxisCount = crossAxisCountTablet;
     } else {
-      crossAxisCount = crossAxisCountDesktop; // Desktop
+      crossAxisCount = crossAxisCountDesktop;
     }
 
     return SliverGrid(
