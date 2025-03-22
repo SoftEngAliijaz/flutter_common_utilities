@@ -1,4 +1,4 @@
-## 0.1.12
+## 0.1.13
 
 ### Key Updates
 
@@ -9,9 +9,3 @@
 - **Upgraded Flutter SDK**: Upgraded to Flutter SDK version **3.27**.
 
 - **Dart Update**: Now using Dart version **3.10.0**, bringing the latest language features and performance improvements.
-```  
-
-### Key Improvements:  
-1. Clear and concise explanation of changes.  
-2. Proper version references for both Flutter and Dart.  
-3. Highlighting the introduction of FVM for better developer workflow.
