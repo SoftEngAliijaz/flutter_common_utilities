@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_common_utilities/widgets/stepper_widgets/common_step_circle.dart';
-import 'package:flutter_common_utilities/widgets/stepper_widgets/common_step_line.dart';
+import 'package:flutter_common_utilities/widgets/stepper_widgets/connector_line.dart';
 
 class FlutterCommonStepper extends StatefulWidget {
   const FlutterCommonStepper({
@@ -12,13 +12,15 @@ class FlutterCommonStepper extends StatefulWidget {
     required this.inactiveStepColor,
     required this.activeStepColor,
     required this.lineWidth,
-  }) : assert(currentStep > 0 && currentStep <= totalSteps + 1);
+    required this.steps,
+  }) : assert(currentStep > 0 && currentStep <= totalSteps);
 
   final Color activeStepColor;
   final Color completedStepColor;
   final int currentStep;
   final Color inactiveStepColor;
   final double lineWidth;
+  final List<Widget> steps;
   final int totalSteps;
   final double width;
 
@@ -27,7 +29,7 @@ class FlutterCommonStepper extends StatefulWidget {
 }
 
 class FlutterCommonStepperState extends State<FlutterCommonStepper> {
-  int? currentStep;
+  late int currentStep;
   bool isCompleted = false;
 
   @override
@@ -37,10 +39,10 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
   }
 
   void moveToNextStep() {
-    if (currentStep! < widget.totalSteps) {
+    if (currentStep < widget.totalSteps) {
       setState(() {
-        currentStep = (currentStep! + 1);
-        if (currentStep! > widget.totalSteps) {
+        currentStep++;
+        if (currentStep > widget.totalSteps) {
           isCompleted = true;
         }
       });
@@ -48,30 +50,34 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
   }
 
   void moveToPreviousStep() {
-    if (currentStep! > 1) {
+    if (currentStep > 1) {
       setState(() {
-        currentStep = (currentStep! - 1);
+        currentStep--;
       });
     }
   }
 
   void goToStep(int step) {
-    setState(() {
-      currentStep = step;
-      if (currentStep! > widget.totalSteps) {
-        isCompleted = true;
-      }
-    });
+    if (step >= 1 && step <= widget.totalSteps) {
+      setState(() {
+        currentStep = step;
+        if (currentStep > widget.totalSteps) {
+          isCompleted = true;
+        }
+      });
+    }
   }
 
   List<Widget> _buildSteps() {
-    List<Widget> steps = [];
+    List<Widget> stepWidgets = [];
+
     for (int i = 0; i < widget.totalSteps; i++) {
       var circleColor = _getCircleColor(i);
       var borderColor = _getBorderColor(i);
       var lineColor = _getLineColor(i);
 
-      steps.add(
+      // Step Circle
+      stepWidgets.add(
         CommonStepCircle(
           index: i,
           circleColor: circleColor,
@@ -81,25 +87,33 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
         ),
       );
 
+      if (i < widget.steps.length) {
+        stepWidgets.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: widget.steps[i],
+          ),
+        );
+      } else {
+        stepWidgets.add(const SizedBox(width: 16));
+      }
+
       if (i != widget.totalSteps - 1) {
-        steps.add(
-          CommonStepLine(
+        stepWidgets.add(
+          StepperConnectorLine(
             lineColor: lineColor,
             lineWidth: widget.lineWidth,
           ),
         );
       }
     }
-    return steps;
+
+    return stepWidgets;
   }
 
   Widget _getInnerWidget(int index) {
-    if (index + 1 < currentStep!) {
-      return const Icon(
-        Icons.check,
-        color: Colors.white,
-        size: 16.0,
-      );
+    if (index + 1 < currentStep) {
+      return const Icon(Icons.check, color: Colors.white, size: 16.0);
     } else if (index + 1 == currentStep) {
       return Center(
         child: Text(
@@ -112,12 +126,12 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
         ),
       );
     } else {
-      return Container();
+      return const SizedBox.shrink(); // Avoid empty container issues
     }
   }
 
   Color _getCircleColor(int index) {
-    if (index + 1 < currentStep!) {
+    if (index + 1 < currentStep) {
       return widget.completedStepColor;
     } else if (index + 1 == currentStep) {
       return widget.activeStepColor;
@@ -127,7 +141,7 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
   }
 
   Color _getBorderColor(int index) {
-    if (index + 1 < currentStep!) {
+    if (index + 1 < currentStep) {
       return widget.completedStepColor;
     } else if (index + 1 == currentStep) {
       return widget.activeStepColor;
@@ -137,8 +151,8 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
   }
 
   Color _getLineColor(int index) {
-    return currentStep! > index + 1
-        ? Colors.blue.withOpacity(0.4)
+    return currentStep > index + 1
+        ? widget.completedStepColor.withOpacity(0.4)
         : Colors.grey[200]!;
   }
 
@@ -147,9 +161,7 @@ class FlutterCommonStepperState extends State<FlutterCommonStepper> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 24.0),
       width: widget.width,
-      child: Row(
-        children: _buildSteps(),
-      ),
+      child: Row(children: _buildSteps()),
     );
   }
 }

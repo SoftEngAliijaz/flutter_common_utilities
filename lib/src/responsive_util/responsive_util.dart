@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ResponsiveUtil extends StatelessWidget {
+class ResponsiveUtil extends StatefulWidget {
   const ResponsiveUtil({
     super.key,
     required this.mobile,
@@ -15,21 +15,7 @@ class ResponsiveUtil extends StatelessWidget {
   final Widget desktop;
 
   @override
-  Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-
-    if (width >= 1921) {
-      return desktop;
-    } else if (width >= 801) {
-      return desktop;
-    } else if (width >= 451) {
-      return tablet ?? desktop;
-    } else if (width >= 0) {
-      return mobileLarge ?? tablet ?? desktop;
-    } else {
-      return mobile;
-    }
-  }
+  State<ResponsiveUtil> createState() => _ResponsiveUtilState();
 
   static bool isMobile(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -43,11 +29,26 @@ class ResponsiveUtil extends StatelessWidget {
 
   static bool isTablet(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
-    return width > 800 && width <= 1920;
+    return width > 800 && width <= 1200;
   }
 
   static bool isDesktop(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
-    return width > 1920;
+    return width > 1200;
+  }
+}
+
+class _ResponsiveUtilState extends State<ResponsiveUtil> {
+  @override
+  Widget build(BuildContext context) {
+    if (ResponsiveUtil.isDesktop(context)) {
+      return widget.desktop;
+    } else if (ResponsiveUtil.isTablet(context)) {
+      return widget.tablet ?? widget.desktop;
+    } else if (ResponsiveUtil.isMobileLarge(context)) {
+      return widget.mobileLarge ?? widget.tablet ?? widget.desktop;
+    } else {
+      return widget.mobile;
+    }
   }
 }

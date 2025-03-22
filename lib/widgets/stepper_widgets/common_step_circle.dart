@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CommonStepCircle extends StatelessWidget {
+class CommonStepCircle extends StatefulWidget {
   const CommonStepCircle({
     super.key,
     required this.index,
@@ -17,19 +17,24 @@ class CommonStepCircle extends StatelessWidget {
   final double lineWidth;
 
   @override
+  State<CommonStepCircle> createState() => _CommonStepCircleState();
+}
+
+class _CommonStepCircleState extends State<CommonStepCircle> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: 28.0,
       height: 28.0,
       decoration: BoxDecoration(
-        color: circleColor,
+        color: widget.circleColor,
         borderRadius: BorderRadius.circular(25.0),
         border: Border.all(
-          color: borderColor,
+          color: widget.borderColor,
           width: 1.0,
         ),
       ),
-      child: innerWidget,
+      child: widget.innerWidget,
     );
   }
 }

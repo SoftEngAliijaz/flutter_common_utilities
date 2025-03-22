@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CommonStepLine extends StatelessWidget {
-  const CommonStepLine({
+class StepperConnectorLine extends StatelessWidget {
+  const StepperConnectorLine({
     super.key,
     required this.lineColor,
     required this.lineWidth,
